@@ -6,11 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:data": "ts-node -r tsconfig-paths/register scripts/migrate-from-data.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/postcss": "^4.1.3",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "eslint": "^9.24.0",
     "eslint-config-next": "15.1.6",
     "framer-motion": "^12.23.12",
@@ -22,12 +25,18 @@
     "tailwindcss": "^4.1.3"
   },
   "devDependencies": {
-    "@types/node": "^20.8.9",
+    "@types/node": "^20.19.17",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.0",
+    "@vercel/blob": "^2.0.0",
     "autoprefixer": "^10.4.17",
+    "dotenv": "^17.2.2",
+    "mime-types": "^3.0.1",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "typescript": "^5.3.3"
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
   }
 }

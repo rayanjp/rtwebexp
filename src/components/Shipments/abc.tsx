@@ -1,7 +1,4 @@
-// src/components/Shipments/shipmentsData.ts
-import { Shipment } from "@/types/shipment";
-
-const shipmentsData: Shipment[] = [
+[
   {
     "id": "1",
     "title": "Toyota Corolla",
@@ -259,9 +256,5 @@ const shipmentsData: Shipment[] = [
       "https://vtdzsj3rex0zyah3.public.blob.vercel-storage.com/shipments/toyota-noah-uk1/4.jpg",
       "https://vtdzsj3rex0zyah3.public.blob.vercel-storage.com/shipments/toyota-noah-uk1/5.jpg"
     ]
-  },
-
-
-];
-
-export default shipmentsData;
+  }
+]
