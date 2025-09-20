@@ -7,7 +7,7 @@ const Countries = () => {
   return (
     <section className="py-12 rt-section-a">
       <div className="container">
-        <div className="rounded-md bg-white px-6 py-8 sm:px-10 md:px-[50px] xl:p-[50px] 2xl:px-[70px] border border-[rgba(2,6,23,.06)] shadow-[0_6px_18px_rgba(2,6,23,.04)]">
+        <div className="rounded-md bg-[var(--rt-surface)] px-6 py-8 sm:px-10 md:px-[50px] xl:p-[50px] 2xl:px-[70px] border border-[var(--rt-ring)] shadow-[0_6px_18px_rgba(2,6,23,.06)]">
           <div className="mb-6 text-center">
             <h3 className="text-[15px] sm:text-[16px] font-semibold tracking-[0.18em] text-[var(--rt-ink-dim)] uppercase select-none">
               🌍 Countries we’ve exported to

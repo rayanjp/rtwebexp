@@ -23,27 +23,33 @@ const Header = () => {
     <header
       className={[
         "header top-0 left-0 z-[9999] flex w-full items-center transition-all duration-300",
-        sticky
-          ? "fixed backdrop-blur-md shadow-[0_6px_24px_rgba(2,6,23,.06)]"
-          : "absolute",
-        // glassy white when sticky, fully transparent on hero
-        sticky ? "bg-white/80" : "bg-transparent",
-        sticky ? "py-0" : "py-1",
+        sticky ? "fixed" : "absolute",
+        "py-1", // consistent vertical padding; logo still shrinks on sticky
       ].join(" ")}
     >
+      {/* Glass BACKGROUND layer (so links stay transparent) */}
+      <div
+        aria-hidden
+        className={[
+          "pointer-events-none absolute inset-0 z-0 transition-opacity duration-300",
+          sticky ? "opacity-100" : "opacity-0",
+          "backdrop-blur-md bg-[var(--rt-header-glass)]",
+        ].join(" ")}
+      />
+
       {/* hairline */}
       <div
         aria-hidden
         className={[
-          "pointer-events-none absolute inset-x-0 bottom-0 h-px transition-opacity duration-300",
-          "bg-[linear-gradient(90deg,rgba(2,6,23,0),rgba(2,6,23,.08),rgba(2,6,23,0))]",
+          "pointer-events-none absolute inset-x-0 bottom-0 h-px transition-opacity duration-300 z-0",
+          "bg-[linear-gradient(90deg,rgba(2,6,23,0),var(--rt-header-hairline),rgba(2,6,23,0))]",
           sticky ? "opacity-100" : "opacity-0",
         ].join(" ")}
       />
 
-      <div className="container">
+      <div className="container relative z-10">
         <div className="relative -mx-4 flex items-center justify-between">
-          {/* Logo (keeps your smooth shrink) */}
+          {/* Logo */}
           <div className="w-70 max-w-full px-4 xl:mr-12">
             <Link
               href="/"
@@ -56,7 +62,7 @@ const Header = () => {
               <span
                 className={[
                   "inline-block origin-left transition-transform duration-300 ease-out",
-                  sticky ? "scale-[0.85]" : "scale-100",
+                  sticky ? "scale-[0.95]" : "scale-125",
                 ].join(" ")}
               >
                 <Image
@@ -79,7 +85,7 @@ const Header = () => {
               aria-label="Toggle navigation"
               aria-expanded={navbarOpen}
               aria-controls="navbarCollapse"
-              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-lg p-2 lg:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-lg p-2 lg:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 bg-transparent"
             >
               <span className={["block h-0.5 w-7 bg-[var(--rt-ink)] transition-all", navbarOpen ? "translate-y-[6px] rotate-45" : ""].join(" ")} />
               <span className={["mt-1 block h-0.5 w-7 bg-[var(--rt-ink)] transition-opacity", navbarOpen ? "opacity-0" : "opacity-100"].join(" ")} />
@@ -89,22 +95,24 @@ const Header = () => {
             {/* Mobile overlay */}
             {navbarOpen && (
               <button
-                className="fixed inset-0 z-20 block lg:hidden cursor-default"
+                className="fixed inset-0 z-20 block lg:hidden cursor-default bg-transparent"
                 aria-hidden="true"
                 onClick={() => setNavbarOpen(false)}
               />
             )}
 
-            {/* Nav: transparent on desktop (FIX for dark pill issue) */}
+            {/* Nav */}
             <nav
               id="navbarCollapse"
               className={[
-                "navbar absolute right-4 z-30 w-[260px] rounded-lg border border-[rgba(2,6,23,.08)] bg-white/95 p-4 backdrop-blur-md",
+                // Mobile menu: keep glassy panel
+                "navbar absolute right-4 z-30 w-[260px] rounded-lg border border-[var(--rt-ring)]",
+                "bg-[var(--rt-header-glass)] p-4 backdrop-blur-md",
                 "transition-all duration-300",
                 navbarOpen
                   ? "visible top-[calc(100%+12px)] opacity-100"
                   : "invisible top-[calc(100%+24px)] opacity-0",
-                // desktop: NO background, NO border, NO padding (so links have no pill behind them)
+                // Desktop: NO background/pill
                 "lg:visible lg:static lg:w-auto lg:border-0 lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none lg:backdrop-blur-0",
               ].join(" ")}
             >
@@ -112,12 +120,12 @@ const Header = () => {
                 {menuData.map((menuItem, index) => {
                   const isActive = menuItem.path && pathname === menuItem.path;
                   return (
-                    <li key={index} className="group relative">
+                    <li key={index} className="group relative bg-transparent">
                       <Link
                         href={menuItem.path}
                         onClick={() => setNavbarOpen(false)}
                         className={[
-                          "relative flex py-2 text-base lg:inline-flex lg:px-0",
+                          "relative flex py-2 text-base lg:inline-flex lg:px-0 bg-transparent", // force transparent
                           sticky ? "lg:py-3" : "lg:py-6",
                           isActive
                             ? "text-[var(--rt-ink)]"
@@ -127,7 +135,7 @@ const Header = () => {
                       >
                         <span
                           className={[
-                            "relative inline-block",
+                            "relative inline-block bg-transparent",
                             "after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[var(--rt-primary)] after:content-[''] after:transition-[width] after:duration-300",
                             "after:w-0 group-hover:after:w-full focus-visible:after:w-full",
                           ].join(" ")}

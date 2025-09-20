@@ -24,16 +24,16 @@ const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
       >
         <span
           aria-hidden="true"
-          className="absolute -top-2 -left-1 text-[130px] text-[var(--rt-primary)]/10 font-serif leading-none select-none pointer-events-none"
+          className="absolute -top-2 -right-1 text-[130px] text-[var(--rt-primary)]/35 font-serif leading-none select-none pointer-events-none"
         >
-          &ldquo;
+          &rdquo;
         </span>
 
         <div className="relative mb-5 flex items-center space-x-1 z-10">
           {ratingIcons}
         </div>
 
-        <p className="relative z-10 mb-8 pb-8 text-base leading-relaxed font-medium text-[var(--rt-ink-dim)] border-b border-[rgba(2,6,23,.08)]">
+        <p className="relative z-10 mb-8 pb-8 text-base leading-relaxed font-medium text-[var(--rt-ink-dim)] border-b border-[var(--rt-ring)]">
           {content}
         </p>
 

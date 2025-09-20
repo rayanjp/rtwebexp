@@ -18,8 +18,10 @@ const Hero = () => {
           <div className="w-full px-4 lg:w-1/2">
             <div className="max-w-[560px]">
               <h1 className="mb-6 text-3xl font-extrabold leading-tight sm:text-5xl md:text-5xl">
-                Your Trusted Car Exporter from Japan
+                Your Trusted <span className="text-[var(--rt-primary)]">Car Exporter</span> from Japan
               </h1>
+
+
 
               <p className="mb-8 text-base sm:text-lg md:text-xl text-[var(--rt-ink-dim)] leading-relaxed">
                 We export all kinds of vehicles from Japan — used cars, trucks, heavy machinery and even European imports — straight to your port.
@@ -40,7 +42,7 @@ const Hero = () => {
                   href="#how-it-works"
                   className="
                     inline-flex items-center justify-center
-                    rounded-md border border-[rgba(2,6,23,.12)] px-8 py-4 text-base font-semibold
+                    rounded-md border border-[var(--rt-ring)] px-8 py-4 text-base font-semibold
                     text-[var(--rt-ink)] transition-colors hover:text-[var(--rt-primary)] hover:border-[var(--rt-primary)]
                   "
                 >
@@ -65,17 +67,26 @@ const Hero = () => {
 
           {/* RIGHT */}
           <div className="relative mt-12 w-full px-4 lg:mt-0 lg:w-1/2">
-            <div className="relative mx-auto max-w-[560px]">
+            <div
+              className="
+      relative mx-auto max-w-[480px]   /* smaller: was 560px */
+      lg:ml-auto lg:mr-0              /* push to the right on large screens */
+    "
+            >
               <Image
                 src="/images/hero-bg.jpg"
                 alt="Featured vehicle"
                 width={640}
                 height={430}
                 priority
-                className="rounded-lg object-cover shadow-[0_14px_40px_rgba(2,6,23,.12)]"
+                className="
+        rounded-lg object-cover
+        shadow-[0_14px_40px_rgba(2,6,23,.12)]
+      "
               />
             </div>
           </div>
+
         </div>
       </div>
     </section>

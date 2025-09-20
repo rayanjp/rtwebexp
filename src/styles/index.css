@@ -1,18 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap') layer(base);
-
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 
 /* ─────────────────────────────────────────
-   SKY & ONYX — PREMIUM / LUXE PALETTE
+   SAPPHIRE & ONYX — LUXE LIGHT THEME
    Edit ONLY the variables inside :root.
    ───────────────────────────────────────── */
 :root {
-  /* Brand */
---rt-primary:#0C7A55; --rt-primary-600:#086245; --rt-gold:#C6A35A;
---rt-ink:#0A1210; --rt-ink-dim:#365046;
---rt-surface:#FFFFFF; --rt-page:#F5FAF7; --rt-muted:#ECF4F0; --rt-ring:rgba(10,18,16,.10);
+  /* Brand core */
+ --rt-primary:#2F86F6;
+--rt-primary-600:#1E66FF;
+--rt-gold:#D1B16E;
+--rt-ink:#0B0F1A;
+--rt-ink-dim:#3C4B63;
+--rt-surface:#FFFFFF;
+--rt-page:#ECF2FF;
+--rt-muted:#E7EEFE;
+--rt-ring:rgba(11,15,26,.10);
+--rt-header-glass:rgba(255,255,255,.82);
+--rt-header-hairline:rgba(11,15,26,.10);
+--rt-footer-bg:#0E1B2A;
+--rt-footer-ink:#E7EEF6;
+--rt-footer-ink-dim:#A8B6C9;
+--rt-footer-accent:#4D90FE;
+/* --rt-hero-sky:rgba(47,134,246,.22);
+--rt-hero-gold:rgba(209,177,110,.18);
+--rt-hero-top:#F7FAFF;
+--rt-hero-bottom:#EAF1FF; */
+  --rt-hero-sky: rgba(47,134,246,.28);   /* was .22 */
+  --rt-hero-gold: rgba(209,177,110,.22); /* was .18 */
+  --rt-hero-top:  #EAF0FF;               /* was #F7FAFF */
+  --rt-hero-bottom:#DEE7FF;              /* was #EAF1FF */
 }
 
 @theme {
@@ -31,7 +50,10 @@
 
   --color-white: var(--rt-surface);
   --color-black: #0B0F1A;
-  --color-dark: var(--rt-surface);
+
+  /* IMPORTANT: map “dark” utility to a gentle tinted surface
+     so components using bg-dark look premium, not black. */
+  --color-dark: #0B0F1A; /* keep utility meaning; used rarely */
   --color-bg-color-dark: var(--rt-page);
 
   --color-primary: var(--rt-primary);
@@ -54,20 +76,20 @@
   --color-gray-900: #0F172A;
   --color-gray-950: #020617;
 
-  /* Shadows tuned for light UI */
+  /* Shadows tuned for a brighter, visible UI */
   --shadow-one: 0 1px 2px rgba(2, 6, 23, .05);
-  --shadow-two: 0 6px 18px rgba(2, 6, 23, .06);
-  --shadow-three: 0 18px 40px rgba(2, 6, 23, .08);
-  --shadow-feature-2: 0 12px 30px rgba(47, 134, 246, .16);
-  --shadow-sticky: inset 0 -1px 0 0 rgba(2, 6, 23, .06);
-  --shadow-sticky-dark: inset 0 -1px 0 0 rgba(2, 6, 23, .06);
-  --shadow-submit: 0 8px 24px rgba(47, 134, 246, .15);
-  --shadow-submit-dark: 0 8px 24px rgba(47, 134, 246, .15);
+  --shadow-two: 0 10px 26px rgba(2, 6, 23, .08);
+  --shadow-three: 0 22px 48px rgba(2, 6, 23, .10);
+  --shadow-feature-2: 0 14px 34px rgba(47, 134, 246, .16);
+  --shadow-sticky: inset 0 -1px 0 0 var(--rt-header-hairline);
+  --shadow-sticky-dark: inset 0 -1px 0 0 var(--rt-header-hairline);
+  --shadow-submit: 0 10px 26px rgba(47, 134, 246, .18);
+  --shadow-submit-dark: 0 10px 26px rgba(47, 134, 246, .18);
   --shadow-btn: 0 1px 2px rgba(2, 6, 23, .12);
-  --shadow-btn-hover: 0 2px 6px rgba(2, 6, 23, .16);
+  --shadow-btn-hover: 0 4px 10px rgba(2, 6, 23, .16);
   --shadow-btn-light: 0 1px 2px rgba(2, 6, 23, .10);
 
-  --drop-shadow-three: 0 6px 14px rgba(2, 6, 23, .06);
+  --drop-shadow-three: 0 8px 18px rgba(2, 6, 23, .08);
 }
 
 /* ───────── Base ───────── */
@@ -96,21 +118,23 @@
 /* ───────── Section helpers & visual seams ───────── */
 @layer utilities {
 
-  /* HERO: luxe light gradient – sky+gold glow on icy base */
+  /* HERO: stronger luxe sky + brass over icy base */
   .rt-hero {
     background:
-      radial-gradient(120% 70% at 0% -10%, rgba(47, 134, 246, .18) 0%, rgba(47, 134, 246, 0) 60%),
-      radial-gradient(90% 60% at 100% 0%, rgba(203, 161, 67, .16) 0%, rgba(203, 161, 67, 0) 55%),
-      linear-gradient(180deg, #FAFCFF 0%, #EEF4FF 100%);
+      radial-gradient(120% 70% at 0% -10%, var(--rt-hero-sky) 0%, rgba(47,134,246,0) 62%),
+      radial-gradient(90% 60% at 100% 0%, var(--rt-hero-gold) 0%, rgba(203,161,67,0) 55%),
+      linear-gradient(180deg, var(--rt-hero-top) 0%, var(--rt-hero-bottom) 100%);
   }
 
-  /* Alternating section backgrounds */
+  /* Alternating section backgrounds — visibly different, not jarring */
   .rt-section-a {
-    background: var(--rt-surface);
+    background: var(--rt-page);
   }
-
   .rt-section-b {
-    background: var(--rt-muted);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.9)),
+      radial-gradient(120% 80% at 80% -10%, rgba(47,134,246,.10), transparent 60%),
+      var(--rt-muted);
   }
 
   /* Cards */
@@ -118,10 +142,10 @@
     background: var(--rt-surface);
     box-shadow: var(--shadow-two);
     border: 1px solid var(--rt-ring);
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
   }
 
-  /* Soft divider between sections (prevents “hard” color jumps) */
+  /* Soft divider between sections (prevents “hard” jumps) */
   .rt-divider {
     height: 56px;
     background: linear-gradient(to bottom,
@@ -133,60 +157,18 @@
 
 /* Header helpers (kept) */
 @utility sticky {
-  & .header-logo {
-    @apply py-5 lg:py-2;
-  }
-
-  & .menu-scroll.active {
-    @apply opacity-70;
-  }
+  & .header-logo { @apply py-5 lg:py-2; }
+  & .menu-scroll.active { @apply opacity-70; }
 }
-
-@utility header-logo {
-  .sticky & {
-    @apply py-5 lg:py-2;
-  }
-}
-
-@utility menu-scroll {
-  .sticky &.active {
-    @apply opacity-70;
-  }
-}
-
-@utility active {
-  .sticky &.menu-scroll {
-    @apply opacity-70;
-  }
-}
-
-@utility dot {
-  input#togglePlan:checked~& {
-    @apply translate-x-full;
-  }
-}
-
-@utility box {
-  input#checkboxLabel:checked~& span {
-    @apply opacity-100;
-  }
-}
+@utility header-logo { .sticky & { @apply py-5 lg:py-2; } }
+@utility menu-scroll { .sticky &.active { @apply opacity-70; } }
+@utility active { .sticky &.menu-scroll { @apply opacity-70; } }
+@utility dot { input#togglePlan:checked~& { @apply translate-x-full; } }
+@utility box { input#checkboxLabel:checked~& span { @apply opacity-100; } }
 
 /* Marquee (Countries) */
-@keyframes rt-scroll {
-  0% {
-    transform: translateX(0)
-  }
-
-  100% {
-    transform: translateX(-50%)
-  }
-}
-
-.rt-marquee {
-  animation: rt-scroll 28s linear infinite;
-  will-change: transform;
-}
+@keyframes rt-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.rt-marquee { animation: rt-scroll 28s linear infinite; will-change: transform; }
 
 /* Testimonials scope (uses same palette tokens) */
 @layer utilities {
@@ -194,22 +176,25 @@
     --color-primary: var(--rt-primary);
     --color-yellow: var(--rt-gold);
     --color-accent: var(--rt-primary);
-
     --color-bg-color-dark: var(--rt-muted);
     --color-gray-light: var(--rt-surface);
     --color-dark: var(--rt-surface);
-
     --color-body-color: var(--rt-ink-dim);
     --color-body-color-dark: #6B7C92;
-
-    --shadow-two: 0 6px 18px rgba(2, 6, 23, .06);
-    --shadow-feature-2: 0 12px 30px rgba(47, 134, 246, .16);
+    --shadow-two: 0 10px 26px rgba(2, 6, 23, .08);
+    --shadow-feature-2: 0 14px 34px rgba(47, 134, 246, .16);
   }
 }
 
-html {
-  scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+
+/* Countries marquee item tone */
+@layer utilities {
+  .rt-item:hover { color: var(--rt-primary); }
 }
+
+/* OPTIONAL THEME PRESETS remain below for quick swapping (unchanged) */
+
 
 /* ─────────────────────────────────────────
    OPTIONAL THEME PRESETS (copy/paste over :root)

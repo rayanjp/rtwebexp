@@ -23,10 +23,17 @@ const Shipments = ({
   ctaHref,
   ctaLabel = "View more shipments",
 }: Props) => {
-  const list: Shipment[] = typeof limit === "number" ? shipmentsData.slice(0, limit) : shipmentsData;
+  const list: Shipment[] =
+    typeof limit === "number" ? shipmentsData.slice(0, limit) : shipmentsData;
 
   return (
-    <section className={["rt-section-a relative z-10", paddingTop, "pb-16 md:pb-20 lg:pb-28"].join(" ")}>
+    <section
+      className={[
+        "rt-section-a relative z-10",
+        paddingTop,
+        "pb-16 md:pb-20 lg:pb-28",
+      ].join(" ")}
+    >
       <div className="container">
         <SectionTitle
           title={title}
@@ -46,14 +53,27 @@ const Shipments = ({
               href={ctaHref}
               className="
                 inline-flex items-center justify-center
-                rounded-md border border-[rgba(2,6,23,.12)] px-6 py-3 text-sm font-semibold
-                text-[var(--rt-ink)] transition-colors
+                rounded-md border border-[var(--rt-ring)] px-6 py-3 text-sm font-semibold
+                text-[var(--rt-ink)] transition-all
                 hover:text-[var(--rt-primary)] hover:border-[var(--rt-primary)]
+                hover:-translate-y-[1px]
+                [box-shadow:var(--shadow-btn)]
+                hover:[box-shadow:var(--shadow-btn-hover)]
               "
             >
               {ctaLabel}
-              <svg viewBox="0 0 24 24" className="ml-2 h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 5l7 7-7 7" />
+              <svg
+                viewBox="0 0 24 24"
+                className="ml-2 h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 12h14M13 5l7 7-7 7"
+                />
               </svg>
             </Link>
           </div>

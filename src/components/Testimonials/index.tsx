@@ -25,7 +25,7 @@ const Testimonials = () => {
       </div>
 
       {/* gentle accents (currentColor = brand primary) */}
-      <div className="absolute right-0 top-6 z-[-1] text-accent/30">
+      <div className="absolute right-0 top-6 z-[-1] text-[var(--rt-primary)]/30">
         <svg width="220" height="520" viewBox="0 0 238 531" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect opacity="0.3" x="422.819" y="-70.8145" width="196" height="541.607" rx="2"
                 transform="rotate(51.2997 422.819 -70.8145)" fill="url(#a0)"/>
