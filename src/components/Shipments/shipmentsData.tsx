@@ -2,7 +2,7 @@
 import { Shipment } from "@/types/shipment";
 
 const shipmentsData: Shipment[] = [
-  
+
   {
     "id": "2",
     "title": "Audi A3",
@@ -18,7 +18,7 @@ const shipmentsData: Shipment[] = [
       "https://vtdzsj3rex0zyah3.public.blob.vercel-storage.com/shipments/audi-a3-uk1/5.jpg"
     ]
   },
-  
+
   {
     "id": "6",
     "title": "Lexus LX 570",
@@ -36,7 +36,7 @@ const shipmentsData: Shipment[] = [
       "https://vtdzsj3rex0zyah3.public.blob.vercel-storage.com/shipments/lexus-lx570-uk1/7.jpg"
     ]
   },
- 
+
   {
     "id": "14",
     "title": "Toyota CH-R Hybrid",
@@ -53,7 +53,20 @@ const shipmentsData: Shipment[] = [
       "https://vtdzsj3rex0zyah3.public.blob.vercel-storage.com/shipments/toyota-chr-pk1/6.jpg"
     ]
   },
-  
+  {
+    "id": "5",
+    "title": "Caterpillar Forklift",
+    "model": "",
+    "year": 2017,
+    "destination": "Lebanon",
+    "cover": "https://ammisqfdfibrdiggrnio.supabase.co/storage/v1/object/public/machinery/forklift.jpg",
+    "images": [
+      "https://ammisqfdfibrdiggrnio.supabase.co/storage/v1/object/public/machinery/forklift.jpg",
+      "https://ammisqfdfibrdiggrnio.supabase.co/storage/v1/object/public/machinery/images.jpg",
+      "https://ammisqfdfibrdiggrnio.supabase.co/storage/v1/object/public/machinery/images%20(1).jpg"
+    ]
+  },
+
 ];
 
 export default shipmentsData;
